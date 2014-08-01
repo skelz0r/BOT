@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cinch (2.1.0)
+    text-hyphen (1.4.1)
+    tts (0.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cinch
+  text-hyphen
+  tts
