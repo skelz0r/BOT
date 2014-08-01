@@ -1,7 +1,16 @@
 require 'cinch'
 require 'text/hyphen'
 
-RAND=20
+if ENV["DEBUG"]
+  p "DEBUG"
+  NICK = "BOTDEBUG"
+  CHANS = ["#autisme"]
+  RAND = 1
+else
+  NICK = "BOT"
+  CHANS = ["#balemboy", "#agora"]
+  RAND = 20
+end
 
 class Austisme
   def initialize(sentence)
@@ -29,14 +38,15 @@ end
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.nick = "BOT"
+    c.nick = NICK
+    c.user = "SER"
     c.server = "irc.iiens.net"
-    c.channels = ["#balemboy"]
+    c.channels = CHANS
   end
 
   on :message, /.*/ do |m|
     begin
-      m.reply Austisme.new(m.message).say if rand(RAND) == 1
+      m.reply Format(:bold, "#{Austisme.new(m.message).say}") if rand(RAND) == 0
     rescue
       m.reply "DOH"
     end
