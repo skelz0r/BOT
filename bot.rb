@@ -10,7 +10,18 @@ class Austisme
 
   def say
     index = @points[-1]
-    @sentence[index..-1].upcase
+    sentence = @points.empty? ? @sentence : @sentence[index..-1]
+    upcase(sanitize_punctuation(sentence))
+  end
+
+  protected
+
+  def sanitize_punctuation(sentence)
+    sentence.gsub(/ +[^\w\s]*$/, "").gsub(/ *<3/, "").gsub("*", "")
+  end
+
+  def upcase(string)
+    string.upcase.gsub(/[æøåäâãàáëêèéïîìíöôõòóüûùúý]/){|s| (s.ord-32).chr(Encoding::UTF_8)}
   end
 end
 
