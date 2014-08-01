@@ -1,6 +1,8 @@
 require 'cinch'
 require 'text/hyphen'
 
+RAND=20
+
 class Austisme
   def initialize(sentence)
     @hh = Text::Hyphen.new(language: 'fr')
@@ -34,7 +36,7 @@ bot = Cinch::Bot.new do
 
   on :message, /.*/ do |m|
     begin
-      m.reply Austisme.new(m.message).say if rand(50) == 1
+      m.reply Austisme.new(m.message).say if rand(RAND) == 1
     rescue
       m.reply "DOH"
     end
