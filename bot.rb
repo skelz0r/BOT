@@ -10,7 +10,7 @@ if ENV["DEBUG"]
 else
   NICK = "BOT"
   CHANS = ["#balemboy", "#agora"]
-  RAND = 20
+  RAND = 50
 end
 
 SOUND_PATH = "sounds/"
