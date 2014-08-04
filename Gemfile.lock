@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     cinch (2.1.0)
+    ruby-sox (0.0.1)
     text-hyphen (1.4.1)
     tts (0.5.0)
 
@@ -10,5 +11,6 @@ PLATFORMS
 
 DEPENDENCIES
   cinch
+  ruby-sox
   text-hyphen
   tts

@@ -2,6 +2,7 @@ require 'cinch'
 require 'text/hyphen'
 require 'tts'
 require 'uri'
+require 'ruby-sox'
 
 if ENV["DEBUG"]
   p "DEBUG"
@@ -30,7 +31,8 @@ class Austisme
 
   def generate_sound(options={with_url: false})
     file_name = path_to_file(final_sentence)
-    final_sentence.downcase.to_file "fr", SOUND_PATH + file_name
+    final_sentence.downcase.to_file "fr", (SOUND_PATH + file_name + ".tmp.mp3")
+    modulate_sound(SOUND_PATH + file_name)
     options[:with_url] ? URI.escape(URL_SOUND + file_name) : SOUND_PATH + file_name
   end
 
@@ -48,6 +50,20 @@ class Austisme
     file = "#{sentence}.MP3"
     File.delete(SOUND_PATH + file) if File.exists?(SOUND_PATH + file)
     file
+  end
+
+  def modulate_sound(file)
+    tmp_file = file+".tmp.mp3"
+    sox = Sox::Cmd.new
+          .add_input(tmp_file)
+          .set_output(file)
+          .set_effects(sound_options)
+    sox.run
+    File.delete(tmp_file)
+  end
+
+  def sound_options
+    { pitch: rand(-1500..1500), speed: rand(0.5..1.5) }
   end
 
   def sanitize_punctuation(sentence)
