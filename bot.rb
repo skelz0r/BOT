@@ -1,6 +1,7 @@
 require 'cinch'
 require 'text/hyphen'
 require 'tts'
+require 'uri'
 
 if ENV["DEBUG"]
   p "DEBUG"
@@ -30,7 +31,7 @@ class Austisme
   def generate_sound(options={with_url: false})
     file_name = path_to_file(final_sentence)
     final_sentence.downcase.to_file "fr", SOUND_PATH + file_name
-    options[:with_url] ? URL_SOUND + file_name : SOUND_PATH + file_name
+    options[:with_url] ? URI.escape(URL_SOUND + file_name) : SOUND_PATH + file_name
   end
 
   protected
