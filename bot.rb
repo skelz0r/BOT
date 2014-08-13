@@ -47,7 +47,7 @@ class Austisme
   end
 
   def path_to_file(sentence)
-    file = "#{sentence}.MP3"
+    file = "#{sentence}#{sound_options_stringify}.MP3"
     File.delete(SOUND_PATH + file) if File.exists?(SOUND_PATH + file)
     file
   end
@@ -63,7 +63,11 @@ class Austisme
   end
 
   def sound_options
-    { pitch: rand(-1500..1500), speed: rand(0.5..1.5) }
+    @sound_options ||= { pitch: rand(-1500..1500), speed: rand(0.5..1.5) }
+  end
+
+  def sound_options_stringify
+    "-#{sound_options[:pitch].to_s}-#{sound_options[:speed].to_s.sub(".", "-")}"
   end
 
   def sanitize_punctuation(sentence)
@@ -77,8 +81,9 @@ end
 
 if ENV["LOCAL"]
   p Austisme.new(ARGV[0]).say
-  p Austisme.new(ARGV[0]).generate_sound
-  p Austisme.new(ARGV[0]).generate_sound(with_url: true)
+  aut = Austisme.new(ARGV[0])
+  p aut.generate_sound
+  p aut.generate_sound(with_url: true)
 else
   bot = Cinch::Bot.new do
     configure do |c|
