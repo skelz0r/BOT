@@ -11,11 +11,11 @@ if ENV["DEBUG"]
   RAND = 1
 else
   NICK = "BOT"
-  CHANS = ["#balemboy", "#agora"]
+  CHANS = ["#balemboy", "#1A", "#cesoir", "#rage"]
   RAND = 50
 end
 
-SOUND_PATH = "sounds/"
+SOUND_PATH = "/var/www/bot/"
 URL_SOUND = "http://BOT.skelz0r.fr/"
 
 class Austisme
@@ -63,7 +63,7 @@ class Austisme
   end
 
   def sound_options
-    @sound_options ||= { pitch: rand(-1500..1500), speed: rand(0.5..1.5) }
+    @sound_options ||= { pitch: rand(-1300..1300), speed: rand(0.7..1.2) }
   end
 
   def sound_options_stringify
