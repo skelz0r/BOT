@@ -4,9 +4,9 @@ require 'uri'
 
 require 'lib/tor'
 require 'lib/speeque'
+require 'lib/schizophrenic'
 
 if ENV["DEBUG"]
-  p "DEBUG"
   NICK = "BOTDEBUG"
   CHANS = ["#autisme"]
   RAND = 1
@@ -18,7 +18,7 @@ end
 
 class Austisme
   def initialize(event, last_autisme, last_victim)
-    @tence = Tor.new(event.message) #.final_sentence
+    @tence = Tor.new(event.message)
 
     @event = event
     @last_autisme = last_autisme
@@ -41,7 +41,13 @@ class Austisme
   end
 
   def schizophrenic!
+    schizophrenic = Schizophrenic.new(self, @last_autisme)
 
+    schizophrenic.OVER_NINE_THOUSAND
+
+    # Override
+    @sentence = schizophrenic.sentence
+    @speeque = schizophrenic
   end
 
   def say
@@ -71,10 +77,11 @@ bot = Cinch::Bot.new do
     if autisme.mad?
       autisme.madness!
 
-      # if autisme.monster_mad?
-      # else
-        m.reply (Format(:bold, "#{autisme.say}") + " " + Format(:black, "#{autisme.sound_url}"))
-      # end
+      if autisme.monster_mad?
+        autisme.schizophrenic!
+      end
+
+      m.reply (Format(:bold, "#{autisme.say}") + " " + Format(:black, "#{autisme.sound_url}"))
 
       @last_victim = m.user.nick
       @last_autisme = autisme
