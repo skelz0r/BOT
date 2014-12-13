@@ -11,12 +11,12 @@ class Schizophrenic
 
   def OVER_NINE_THOUSAND
     @file_name = generate_filename
-    combiner = Sox::Combiner.new([@autisme1.sound_path, @autisme2.sound_path], :combine => :concatenate)
+    combiner = Sox::Combiner.new([@autisme2.sound_path, @autisme1.sound_path], :combine => :concatenate)
     combiner.write(self.path)
   end
 
   def sentence
-    @autisme1.say + @autisme2.say
+    @autisme2.say + @autisme1.say
   end
 
   def path
