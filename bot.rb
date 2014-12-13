@@ -96,7 +96,8 @@ else
     on :message, /.*/ do |m|
       begin
         autisme = Austisme.new(m.message)
-        m.reply (Format(:bold, "#{autisme.say}") + " " + Format(:black, "#{autisme.generate_sound(with_url: true)}")) if rand(RAND) == 0
+        m.reply (Format(:bold, "#{autisme.say}") + " " + Format(:black, "#{autisme.generate_sound(with_url: true)}")) if (rand(RAND) == 0 || autisme.say == @last_say)
+        @last_say = autisme.say
       rescue
         m.reply "DOH"
       end
