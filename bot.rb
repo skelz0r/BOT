@@ -19,6 +19,7 @@ end
 class Austisme
   def initialize(event, last_autisme, last_victim)
     @tence = Tor.new(event.message)
+    @sentence = @tence.final_sentence
 
     @event = event
     @last_autisme = last_autisme
@@ -26,7 +27,7 @@ class Austisme
   end
 
   def mad?
-    (rand(RAND) == 0 || (autisme.say == @last_autisme && @last_victime != @event.user.nick))
+    (rand(RAND) == 0 || ( @last_autisme && @sentence == @last_autisme.say && @last_victime != @event.user.nick))
   end
 
   def monster_mad?
@@ -34,8 +35,6 @@ class Austisme
   end
 
   def madness!
-    @sentence = @tence.final_sentence
-
     @speeque = Speeque.new(@sentence)
     @speeque.tolque
   end
