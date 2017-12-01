@@ -1,8 +1,10 @@
-require 'tts'
+require 'espeak'
 require 'ruby-sox'
 
 class Speeque
-  SOUND_PATH = "/var/www/bot/"
+  include ESpeak
+
+  SOUND_PATH = "./sounds/"
   URL_SOUND = "http://BOT.skelz0r.fr/"
 
   def initialize(sentence)
@@ -11,7 +13,8 @@ class Speeque
 
   def tolque
     @file_name = path_to_file(@sentence)
-    @sentence.downcase.to_file "fr", (SOUND_PATH + @file_name + ".tmp.mp3")
+    speech = Speech.new(@sentence, voice: "fr")
+    speech.save(SOUND_PATH + @file_name + ".tmp.mp3")
     modulate_sound(SOUND_PATH + @file_name)
   end
 

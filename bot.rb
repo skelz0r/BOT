@@ -30,23 +30,9 @@ class Austisme
     (rand(RAND) == 0 || ( @last_autisme && @sentence == @last_autisme.say && @last_victime != @event.user.nick))
   end
 
-  def monster_mad?
-    rand(5) == 0
-  end
-
   def madness!
     @speeque = Speeque.new(@sentence)
     @speeque.tolque
-  end
-
-  def schizophrenic!
-    schizophrenic = Schizophrenic.new(self, @last_autisme)
-
-    schizophrenic.OVER_NINE_THOUSAND
-
-    # Override
-    @sentence = schizophrenic.sentence
-    @speeque = schizophrenic
   end
 
   def say
@@ -75,10 +61,6 @@ bot = Cinch::Bot.new do
 
     if autisme.mad?
       autisme.madness!
-
-      if autisme.monster_mad?
-        autisme.schizophrenic!
-      end
 
       m.reply (Format(:bold, "#{autisme.say}") + " " + Format(:black, "#{autisme.sound_url}"))
 

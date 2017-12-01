@@ -1,13 +1,8 @@
-GIT
-  remote: git://github.com/pmint93/tts.git
-  revision: 1497bdb65577dfc8679f64a35d5135a1df0e4185
-  specs:
-    tts (0.7.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
     cinch (2.1.0)
+    espeak-ruby (1.0.4)
     ruby-sox (0.0.1)
     text-hyphen (1.4.1)
 
@@ -16,9 +11,9 @@ PLATFORMS
 
 DEPENDENCIES
   cinch
+  espeak-ruby
   ruby-sox
   text-hyphen
-  tts!
 
 BUNDLED WITH
    1.11.2
