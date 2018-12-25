@@ -1,32 +1,37 @@
 require 'espeak'
 require 'ruby-sox'
 
-class Speeque
+class SentenceToSoundSample
   include ESpeak
-
-  SOUND_PATH = "./sounds/"
-  URL_SOUND = "HTTP://BOT.SKELZ0R.FR/"
 
   def initialize(sentence)
     @sentence = sentence
   end
 
-  def tolque
+  def perform
     @file_name = path_to_file(@sentence)
     speech = Speech.new(@sentence, voice: "fr")
-    speech.save(SOUND_PATH + @file_name + ".tmp.mp3")
-    modulate_sound(SOUND_PATH + @file_name)
+    speech.save(sounds_path + @file_name + ".tmp.mp3")
+    modulate_sound(sounds_path + @file_name)
   end
 
   def path
-    SOUND_PATH + @file_name
+    sounds_path + @file_name
   end
 
   def url
-    URI.escape(URL_SOUND + @file_name)
+    URI.escape(url_sound + @file_name)
   end
 
   protected
+
+  def url_sound
+    ENV['URL_SOUND'] || "HTTP://BOT.SKELZ0R.FR/"
+  end
+
+  def sounds_path
+    ENV['SOUNDS_PATH'] || './sounds/'
+  end
 
   def path_to_file(sentence)
     "#{sentence}#{sound_options_stringify}.MP3"

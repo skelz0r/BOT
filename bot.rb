@@ -4,7 +4,7 @@ require 'cinch'
 require 'uri'
 
 require 'lib/tor'
-require 'lib/speeque'
+require 'lib/sentence_to_sound_sample'
 
 if ENV["DEBUG"]
   NICK = "BOTDEBUG"
@@ -43,8 +43,8 @@ class Austisme
   end
 
   def madness!
-    @speeque = Speeque.new(@sentence)
-    @speeque.tolque
+    @speeque = SentenceToSoundSample.new(@sentence)
+    @speeque.perform
   end
 
   def say
