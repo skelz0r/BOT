@@ -5,7 +5,7 @@ class Speeque
   include ESpeak
 
   SOUND_PATH = "./sounds/"
-  URL_SOUND = "http://BOT.skelz0r.fr/"
+  URL_SOUND = "HTTP://BOT.SKELZ0R.FR/"
 
   def initialize(sentence)
     @sentence = sentence
