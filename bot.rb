@@ -1,24 +1,30 @@
 $:.unshift File.dirname(__FILE__)
+
 require 'cinch'
 require 'uri'
 
 require 'lib/tor'
 require 'lib/speeque'
-require 'lib/schizophrenic'
 
 if ENV["DEBUG"]
   NICK = "BOTDEBUG"
-  CHANS = ["#autisme"]
+
+  CHANS = [
+    "#autisme",
+  ]
+
   RAND = 1
 else
-  NICK = "BOT"
+  NICK = ENV['NICK'] || "BOT"
+
   CHANS = [
-    "#balemboy", 
+    "#balemboy",
     "#carambar",
-    "#1A", 
-    "#cesoir", 
+    "#1A",
+    "#cesoir",
     "#rage",
   ]
+
   RAND = 30
 end
 
