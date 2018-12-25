@@ -44,7 +44,10 @@ class Speeque
   end
 
   def sound_options
-    @sound_options ||= { pitch: rand(-1300..1300), speed: rand(0.7..1.2) }
+    @sound_options ||= {
+      pitch: rand(-1300..1300),
+      speed: rand(0.7..1.2),
+    }
   end
 
   def sound_options_stringify
