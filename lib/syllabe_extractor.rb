@@ -1,37 +1,20 @@
 require 'text/hyphen'
 
-# SentenceExtractor => Tor
-class Tor
-  RANDOM_TEXT = %w(
-    FU
-    BA
-    YOP
-    PING
-    CLA
-    CI
-    TA
-    YA
-    VIN
-    GIN
-    SEXE
-    CLOPE
-    RHUM
-  )
-
+class SyllabeExtractor
   def initialize(sentence)
     @hh = Text::Hyphen.new(language: 'fr')
     @points = @hh.hyphenate(sentence)
     @sentence = sentence
   end
 
-  def final_sentence
+  def perform
     @final_sentence ||= begin
       index = @points[-1]
       truncate_sentence = @points.empty? ? @sentence : @sentence[index..-1]
       upcase(sanitize_punctuation(truncate_sentence))
     rescue => e
       p e
-      RANDOM_TEXT.sample
+      random_sentence
     end
   end
 
@@ -43,5 +26,23 @@ class Tor
 
   def sanitize_punctuation(sentence)
     sentence.gsub(/ +[^\w\s]*$/, "").gsub(/ *<3/, "").gsub("*", "")
+  end
+
+  def random_sentence
+    %w(
+      FU
+      BA
+      YOP
+      PING
+      CLA
+      CI
+      TA
+      YA
+      VIN
+      GIN
+      SEXE
+      CLOPE
+      RHUM
+    )
   end
 end

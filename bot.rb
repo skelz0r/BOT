@@ -3,7 +3,7 @@ $:.unshift File.dirname(__FILE__)
 require 'cinch'
 require 'uri'
 
-require 'lib/tor'
+require 'lib/syllabe_extractor'
 require 'lib/sentence_to_sound_sample'
 
 if ENV["DEBUG"]
@@ -30,8 +30,8 @@ end
 
 class Austisme
   def initialize(event, last_autisme, last_victim)
-    @tence = Tor.new(event.message)
-    @sentence = @tence.final_sentence
+    @tence = SyllabeExtractor.new(event.message)
+    @sentence = @tence.perform
 
     @event = event
     @last_autisme = last_autisme
