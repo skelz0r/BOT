@@ -34,11 +34,12 @@ class Speeque
 
   def modulate_sound(file)
     tmp_file = file+".tmp.mp3"
-    sox = Sox::Cmd.new
-          .add_input(tmp_file)
-          .set_output(file)
-          .set_effects(sound_options)
+
+    sox = Sox::Cmd.new.add_input(tmp_file)
+      .set_output(file)
+      .set_effects(sound_options)
     sox.run
+
     File.delete(tmp_file)
   end
 
