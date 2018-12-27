@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'sentence_to_sound_sample'
 
 describe SentenceToSoundSample do
   let(:service) { SentenceToSoundSample.new(sentence) }

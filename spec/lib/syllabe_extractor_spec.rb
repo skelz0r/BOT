@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'syllabe_extractor'
 
 describe SyllabeExtractor do
   let(:service) { SyllabeExtractor.new(sentence) }
