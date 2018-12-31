@@ -1,5 +1,7 @@
 $:.unshift File.expand_path(File.join(File.dirname(__FILE__), '../'))
 
+Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each { |f| require f }
+
 require 'hashie'
 
 require 'lib/interceptor/base_interceptor'
@@ -121,4 +123,6 @@ RSpec.configure do |config|
       Dir["#{sounds_absolute_path}/*.MP3"]
     )
   end
+
+  config.include_context "interceptor_test_init", type: :interceptor
 end

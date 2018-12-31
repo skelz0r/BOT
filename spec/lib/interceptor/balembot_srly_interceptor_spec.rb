@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe BalembotSrlyInterceptor, type: :interceptor do
-  let(:instance) { BalembotSrlyInterceptor.new(message, user) }
-  let(:user) { Hashie::Mash.new(nick: 'lol') }
-  let(:message) { 'OKI' }
-
   describe "#match?" do
     subject { instance }
 
