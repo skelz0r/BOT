@@ -30,9 +30,9 @@ class Austisme
 
   def autism_rand
     if initial_message.upcase == initial_message
-      ENV['AUTISM_RAND'] / 2
+      (ENV['AUTISM_RAND'].to_i) / 2
     else
-      ENV['AUTISM_RAND']
+      (ENV['AUTISM_RAND'].to_i)
     end
   end
 end
