@@ -28,11 +28,11 @@ class Austisme
     last_autisme && sentence == last_autisme.say
   end
 
-  def autism_rand
+  def autisme_rand
     if initial_message.upcase == initial_message
-      (ENV['AUTISM_RAND'].to_i) / 2
+      (ENV['AUTISME_RAND'].to_i) / 2
     else
-      (ENV['AUTISM_RAND'].to_i)
+      (ENV['AUTISME_RAND'].to_i)
     end
   end
 end
