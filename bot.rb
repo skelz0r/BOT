@@ -44,6 +44,7 @@ interceptors = [
   OkiInterceptor,
   EohInterceptor,
   BalembotSrlyInterceptor,
+  FridayInterceptor,
   KeywordToSentenceInterceptor,
 ]
 
