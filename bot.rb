@@ -42,6 +42,7 @@ interceptors = [
   OkiInterceptor,
   EohInterceptor,
   BalembotSrlyInterceptor,
+  KeywordToSentenceInterceptor,
 ]
 
 bot = Cinch::Bot.new do
@@ -60,90 +61,6 @@ bot = Cinch::Bot.new do
         m.reply interceptor.reply
         return
       end
-    end
-
-    if m.message == 'DES PUTES'
-      m.reply [
-        'ET DU FROMAGE',
-      ].sample
-      return
-    end
-
-    if m.message == 'KIKI'
-      m.reply [
-        'DO U LUV ME',
-      ].sample
-      return
-    end
-
-    if m.message =~ /\s*T A R T I\s*$/
-      m.reply "F L E X"
-      return
-    end
-
-    if m.message =~ /\s*TARTI\s*$/
-      m.reply "FLEX"
-      return
-    end
-
-    if m.message =~ /\s*PRINCESS\s*$/
-      m.reply "RACLETTE"
-      return
-    end
-
-    if m.message =~ /\s*RA\s*$/
-      m.reply "CLETTE"
-      return
-    end
-
-    if m.message =~ /\s*PRNCSS\s*$/
-      m.reply "RCLTT"
-      return
-    end
-
-    if m.message =~ /\s*RINCESS\s*$/
-      m.reply "ACLETTE"
-      return
-    end
-
-    if m.message =~ /\s*CORN\s*$/
-      m.reply [
-        "FLAKES",
-        "FLEX",
-      ].sample
-      return
-    end
-
-    if m.message =~ /\s*CRN\s*$/
-      m.reply [
-        "FLKS",
-        "FLX",
-      ].sample
-      return
-    end
-
-    if m.message =~ /\s*MARTIN\s*$/
-      m.reply [
-        "MYSTERE",
-        "FLEX",
-      ].sample
-      return
-    end
-
-    if m.message =~ /\s*ARTIN\s*$/
-      m.reply [
-        "YSTERE",
-        "LEX",
-      ].sample
-      return
-    end
-
-    if m.message =~ /\s*MRTN\s*$/
-      m.reply [
-        "MSTR",
-        "FLX",
-      ].sample
-      return
     end
 
     autisme = Austisme.new(m, @last_autisme, @last_victim)
