@@ -9,7 +9,7 @@ class Austisme
   end
 
   def mad?
-    (rand(RAND) == 0 || ( @last_autisme && @sentence == @last_autisme.say && @last_victime != @event.user.nick))
+    (rand(autisme_rand) == 0 || ( @last_autisme && @sentence == @last_autisme.say && @last_victime != @event.user.nick))
   end
 
   def madness!
@@ -23,5 +23,11 @@ class Austisme
 
   def sound_url
     @speeque.url
+  end
+
+  private
+
+  def autism_rand
+    ENV['AUTISM_RAND']
   end
 end

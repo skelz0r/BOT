@@ -23,7 +23,7 @@ if ENV["DEBUG"]
     "#autisme",
   ]
 
-  RAND = 1
+  ENV['AUTISM_RAND'] = 1
 else
   NICK = ENV['NICK'] || "BOT"
 
@@ -35,7 +35,7 @@ else
     "#rage",
   ]
 
-  RAND = 30
+  ENV['AUTISM_RAND'] = 30
 end
 
 interceptors = [
