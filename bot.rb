@@ -19,17 +19,17 @@ end
 @last_autisme = nil
 
 if ENV["DEBUG"]
-  NICK = "BOTDEBUG"
+  ENV['BOT_NICK'] ||= "BOTDEBUG"
 
-  CHANS = [
+  ENV['CHANS'] = [
     "#autisme",
   ]
 
-  ENV['AUTISM_RAND'] = 1
+  ENV['AUTISM_RAND'] ||= 1
 else
-  NICK = ENV['NICK'] || "BOT"
+  ENV['BOT_NICK'] ||= "BOT"
 
-  CHANS = [
+  ENV['CHANS'] = [
     "#balemboy",
     "#carambar",
     "#1A",
@@ -37,7 +37,7 @@ else
     "#rage",
   ]
 
-  ENV['AUTISM_RAND'] = 30
+  ENV['AUTISM_RAND'] ||= 30
 end
 
 interceptors = [
@@ -50,10 +50,10 @@ interceptors = [
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.nick = NICK
+    c.nick = ENV['BOT_NICK']
     c.user = "BOT"
     c.server = "irc.iiens.net"
-    c.channels = CHANS
+    c.channels = ENV['CHANS']
   end
 
   on :message, /.*/ do |m|
