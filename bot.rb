@@ -39,6 +39,7 @@ else
 end
 
 interceptors = [
+  EohInterceptor,
   BalembotSrlyInterceptor,
 ]
 
@@ -75,33 +76,6 @@ bot = Cinch::Bot.new do
     if m.message == 'KIKI'
       m.reply [
         'DO U LUV ME',
-      ].sample
-      return
-    end
-
-    if m.message =~ /eoh\s*$/
-      if rand(100) == 1
-        m.reply 'TG Amora'
-        return
-      end
-
-      m.reply [
-        'On se clap au fond svp',
-        'On se corn au fond svp',
-        'On se clame au fond svp',
-        'On se klam au fond svp',
-        'On se clape au fond svp',
-        'On se skelz0r au fond svp',
-        'On se thurolf au fond svp',
-        'Ça coinche au fond svp',
-        'C\'est coinché au fond svp',
-        'On se stuff au fond svp',
-        'On se ghost au fond svp',
-        'On se profile au fond svp',
-        'On se pakito au fond svp',
-        'On se guinness dans le hall svp',
-        'On picole au fond svp',
-        'On s\'égare au fond svp',
       ].sample
       return
     end
