@@ -3,6 +3,8 @@ $:.unshift File.dirname(__FILE__)
 require 'cinch'
 require 'uri'
 
+require 'lib/interceptor/base_interceptor'
+
 [
   'lib/',
   'lib/interceptor/',
@@ -36,6 +38,10 @@ else
   RAND = 30
 end
 
+interceptors = [
+  BalembotSrlyInterceptor,
+]
+
 bot = Cinch::Bot.new do
   configure do |c|
     c.nick = NICK
@@ -50,16 +56,13 @@ bot = Cinch::Bot.new do
       return
     end
 
-    if m.message == 'SRLY BOT ?'
-      m.reply [
-        'Oui',
-        'Non',
-        'Je ne sais pas',
-        'TG',
-        'SLRY* stp',
-        'On se clame au fond svp merci',
-      ].sample
-      return
+    interceptors.each do |interceptor_klass|
+      interceptor = interceptor_klass.new(m.message, m.user)
+
+      if interceptor.match?
+        m.reply interceptor.reply
+        return
+      end
     end
 
     if m.message == 'DES PUTES'

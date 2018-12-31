@@ -1,5 +1,9 @@
 $:.unshift File.expand_path(File.join(File.dirname(__FILE__), '../'))
 
+require 'hashie'
+
+require 'lib/interceptor/base_interceptor'
+
 [
   'lib/',
   'lib/interceptor/',

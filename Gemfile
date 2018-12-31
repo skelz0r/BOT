@@ -6,6 +6,7 @@ gem "ruby-sox"
 gem "espeak-ruby", require: "espeak"
 
 group :development, :test do
+  gem 'hashie'
   gem "rspec"
   gem "guard-rspec"
 

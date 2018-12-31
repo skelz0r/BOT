@@ -21,6 +21,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashie (3.4.4)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -64,6 +65,7 @@ DEPENDENCIES
   cinch
   espeak-ruby
   guard-rspec
+  hashie
   rb-readline
   rspec
   ruby-sox
