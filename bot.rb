@@ -16,6 +16,8 @@ require 'lib/interceptor/base_interceptor'
   end
 end
 
+@last_autisme = nil
+
 if ENV["DEBUG"]
   NICK = "BOTDEBUG"
 
@@ -63,14 +65,13 @@ bot = Cinch::Bot.new do
       end
     end
 
-    autisme = Austisme.new(m, @last_autisme, @last_victim)
+    autisme = Austisme.new(m.message, @last_autisme)
 
     if autisme.mad?
       autisme.madness!
 
-      m.reply (Format(:bold, "#{autisme.say}") + " " + Format(:black, "#{autisme.sound_url}"))
+      m.reply (Format(:bold, "#{autisme.sentence}") + " " + Format(:black, "#{autisme.sound_url}"))
 
-      @last_victim = m.user.nick
       @last_autisme = autisme
     end
   end

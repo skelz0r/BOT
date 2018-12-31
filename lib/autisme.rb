@@ -1,31 +1,30 @@
 class Austisme
-  def initialize(event, last_autisme, last_victim)
-    @tence = SyllabeExtractor.new(event.message)
-    @sentence = @tence.perform
+  attr_reader :sentence,
+    :last_autisme,
+    :sound_url
 
-    @event = event
+  def initialize(message, last_autisme)
+    @sentence = SyllabeExtractor.new(message).perform
     @last_autisme = last_autisme
-    @last_victim = last_victim
   end
 
   def mad?
-    (rand(autisme_rand) == 0 || ( @last_autisme && @sentence == @last_autisme.say && @last_victime != @event.user.nick))
+    rand(autisme_rand) == 0 ||
+      same_sentence_from_last_autisme?
   end
 
   def madness!
-    @speeque = SentenceToSoundSample.new(@sentence)
-    @speeque.perform
-  end
+    sentence_to_sound_sample = SentenceToSoundSample.new(sentence)
 
-  def say
-    @sentence
-  end
-
-  def sound_url
-    @speeque.url
+    sentence_to_sound_sample.perform
+    @sound_url = sentence_to_sound_sample.url
   end
 
   private
+
+  def same_sentence_from_last_autisme?
+    last_autisme && sentence == last_autisme.say
+  end
 
   def autism_rand
     ENV['AUTISM_RAND']
