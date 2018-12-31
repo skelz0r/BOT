@@ -1,9 +1,11 @@
 class Austisme
   attr_reader :sentence,
+    :initial_message,
     :last_autisme,
     :sound_url
 
   def initialize(message, last_autisme)
+    @initial_message = message
     @sentence = SyllabeExtractor.new(message).perform
     @last_autisme = last_autisme
   end
@@ -27,6 +29,10 @@ class Austisme
   end
 
   def autism_rand
-    ENV['AUTISM_RAND']
+    if initial_message.upcase == initial_message
+      ENV['AUTISM_RAND'] / 2
+    else
+      ENV['AUTISM_RAND']
+    end
   end
 end
