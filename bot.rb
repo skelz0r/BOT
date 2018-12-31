@@ -39,6 +39,7 @@ else
 end
 
 interceptors = [
+  OkiInterceptor,
   EohInterceptor,
   BalembotSrlyInterceptor,
 ]
@@ -52,11 +53,6 @@ bot = Cinch::Bot.new do
   end
 
   on :message, /.*/ do |m|
-    if m.message =~ /^\s*OKI\s*\?\s*$/ && ((m.user.nick == 'Skelz0r' || m.user.nick == 'feriel' || m.user.nick == 'Kiddo') || rand(5) == 1)
-      m.reply "OKI"
-      return
-    end
-
     interceptors.each do |interceptor_klass|
       interceptor = interceptor_klass.new(m.message, m.user)
 
