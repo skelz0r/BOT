@@ -25,7 +25,7 @@ class Austisme
   private
 
   def same_sentence_from_last_autisme?
-    last_autisme && sentence == last_autisme.say
+    last_autisme && sentence == last_autisme.sentence
   end
 
   def autisme_rand
