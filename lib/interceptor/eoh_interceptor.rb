@@ -23,7 +23,7 @@ class EohInterceptor < BaseInterceptor
         'On se pakito au fond svp',
         'On se guinness dans le hall svp',
         'On picole au fond svp',
-        'On se cane au fond svp',
+        'On se canne au fond svp',
         'On s\'égare au fond svp',
       ].sample
     end
