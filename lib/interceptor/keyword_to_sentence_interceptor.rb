@@ -24,12 +24,12 @@ class KeywordToSentenceInterceptor < BaseInterceptor
   private
 
   def matching_pattern?(keyword)
-    !!(message =~ /\s*#{keyword}\s*/) ||
+    !!(message =~ /\s*#{keyword}\s*$/) ||
       splitted_text?(keyword)
   end
 
   def splitted_text?(keyword)
-    !!(message =~ /\s*#{split_text(keyword)}\s*/)
+    !!(message =~ /\s*#{split_text(keyword)}\s*$/)
   end
 
   def keywords

@@ -29,6 +29,12 @@ describe KeywordToSentenceInterceptor, type: :interceptor do
     end
 
     context do
+      let(:message) { 'lol RA lol' }
+
+      it { expect(subject.match?).to be false }
+    end
+
+    context do
       let(:message) { 'kiki' }
 
       it { expect(subject.match?).to be false }
