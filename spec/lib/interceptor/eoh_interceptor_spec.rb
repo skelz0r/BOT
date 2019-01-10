@@ -37,5 +37,22 @@ describe EohInterceptor, type: :interceptor do
         subject
       }.not_to raise_error
     end
+
+    context "non-uppercase message" do
+      let(:message) { 'Random casing EOh' }
+
+      it "does not upcase the answer" do
+        expect_any_instance_of(String).not_to receive(:upcase)
+        subject
+      end
+    end
+
+    context "uppercase message" do
+      let(:message) { 'UPPERCASE EOH' }
+
+      it "should uppercase the reply if the message itself was in uppercase" do
+        expect(subject).to eq(subject.upcase)
+      end
+    end
   end
 end
