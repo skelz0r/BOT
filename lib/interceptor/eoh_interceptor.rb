@@ -14,11 +14,7 @@ class EohInterceptor < BaseInterceptor
   private
 
   def answer
-    if rand(amora_rand) == 1
-      'TG Amora'
-    else
-      answers.sample
-    end
+    'TG Amora'
   end
 
   def answers
