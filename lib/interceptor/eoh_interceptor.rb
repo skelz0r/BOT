@@ -51,7 +51,7 @@ class EohInterceptor < BaseInterceptor
       ['corn']*5,
       'Tata',
       'Skelz0r',
-    ].flatten
+    ].flatten.sample
   end
 
   def rand_tg
