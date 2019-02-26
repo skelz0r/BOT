@@ -14,8 +14,8 @@ class EohInterceptor < BaseInterceptor
   private
 
   def answer
-    if rand(amora_rand) == 1
-      'TG Amora'
+    if rand_tg
+      "TG #{random_victim}"
     else
       answers.sample
     end
@@ -45,8 +45,17 @@ class EohInterceptor < BaseInterceptor
     ]
   end
 
-  def amora_rand
-    50
+  def random_victim
+    [
+      'Amora',
+      ['corn']*5,
+      'Tata',
+      'Skelz0r',
+    ].flatten
+  end
+
+  def rand_tg
+    rand(30) == 1
   end
 
   def uppercase_message?

@@ -54,5 +54,19 @@ describe EohInterceptor, type: :interceptor do
         expect(subject).to eq(subject.upcase)
       end
     end
+
+    context "when it's a rand_tg" do
+      before do
+        allow_any_instance_of(EohInterceptor).to receive(:rand_tg).and_return(true)
+      end
+
+      it do
+        expect(subject).to match(/TG/)
+      end
+
+      it do
+        expect(subject).to be_a(String)
+      end
+    end
   end
 end
