@@ -60,8 +60,8 @@ describe EohInterceptor, type: :interceptor do
         allow_any_instance_of(EohInterceptor).to receive(:rand_tg).and_return(true)
       end
 
-      it do
-        expect(subject).to match(/TG/)
+      it "should say TG to a single person" do
+        expect(subject).to match(/TG \S+/)
       end
 
       it do
