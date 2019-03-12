@@ -5,10 +5,9 @@ describe OkiInterceptor, type: :interceptor do
     subject { instance }
 
     context do
-      let(:message) { 'OKI?' }
       let(:nick) { 'skelz0r' }
 
-      it { expect(subject.match?).to be true }
+      it { is_expected.to intercept_message('OKI?') }
     end
 
     context do
@@ -21,21 +20,20 @@ describe OkiInterceptor, type: :interceptor do
       context do
         let(:random_number) { 1 }
 
-        it { expect(subject.match?).to be true }
+        it { is_expected.to intercept_message('OKI?') }
       end
 
       context do
         let(:random_number) { 3 }
 
-        it { expect(subject.match?).to be false }
+        it { is_expected.not_to intercept_message('OKI?') }
       end
     end
 
     context do
-      let(:message) { 'lol' }
       let(:nick) { 'skelz0r' }
 
-      it { expect(subject.match?).to be false }
+      it { is_expected.not_to intercept_message('lol') }
     end
   end
 

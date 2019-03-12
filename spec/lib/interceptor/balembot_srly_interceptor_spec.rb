@@ -4,17 +4,8 @@ describe BalembotSrlyInterceptor, type: :interceptor do
   describe "#match?" do
     subject { instance }
 
-    context do
-      let(:message) { 'SRLY BOT ?' }
-
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { 'srly BOT ?' }
-
-      it { expect(subject.match?).to be false }
-    end
+    it { is_expected.to intercept_message('SRLY BOT ?') }
+    it { is_expected.not_to intercept_message('srly BOT ?') }
   end
 
   describe "#reply" do

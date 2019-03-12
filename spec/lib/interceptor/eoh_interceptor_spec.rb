@@ -4,29 +4,10 @@ describe EohInterceptor, type: :interceptor do
   describe "#match?" do
     subject { instance }
 
-    context do
-      let(:message) { 'eoh' }
-
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { 'EOH ' }
-
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { '  eoh' }
-
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { 'srly BOT ?' }
-
-      it { expect(subject.match?).to be false }
-    end
+    it { is_expected.to intercept_message('eoh') }
+    it { is_expected.to intercept_message('EOH ') }
+    it { is_expected.to intercept_message('   eoh') }
+    it { is_expected.not_to intercept_message('srly BOT ?') }
   end
 
   describe "#reply" do

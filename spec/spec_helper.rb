@@ -125,4 +125,5 @@ RSpec.configure do |config|
   end
 
   config.include_context "interceptor_test_init", type: :interceptor
+  config.include InterceptorMatcher
 end

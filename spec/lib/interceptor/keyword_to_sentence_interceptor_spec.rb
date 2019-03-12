@@ -4,41 +4,13 @@ describe KeywordToSentenceInterceptor, type: :interceptor do
   describe "#match?" do
     subject { instance }
 
-    context do
-      let(:message) { 'KIKI ' }
+    it { is_expected.to intercept_message('KIKI ') }
+    it { is_expected.to intercept_message('T A R T I') }
+    it { is_expected.to intercept_message('DES PUTES') }
 
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { 'T A R T I' }
-
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { 'DES PUTES' }
-
-      it { expect(subject.match?).to be true }
-    end
-
-    context do
-      let(:message) { 'lol' }
-
-      it { expect(subject.match?).to be false }
-    end
-
-    context do
-      let(:message) { 'lol RA lol' }
-
-      it { expect(subject.match?).to be false }
-    end
-
-    context do
-      let(:message) { 'kiki' }
-
-      it { expect(subject.match?).to be false }
-    end
+    it { is_expected.not_to intercept_message('lol') }
+    it { is_expected.not_to intercept_message('lol RA lol') }
+    it { is_expected.not_to intercept_message('kiki') }
   end
 
   describe "#reply" do

@@ -5,26 +5,16 @@ describe FridayInterceptor, type: :interceptor do
     subject { instance }
 
     context do
-      let(:message) { 'vendredi' }
-
       context "when it's friday" do
         before do
           allow_any_instance_of(Time).to receive(:wday).and_return(5)
         end
 
-        it { expect(subject.match?).to be true }
-      end
-    end
+        it { is_expected.to intercept_message('vendredi') }
+        it { is_expected.to intercept_message('vendredi lol') }
 
-    context do
-      let(:message) { 'vendredi lol' }
-
-      context "when it's friday" do
-        before do
-          allow_any_instance_of(Time).to receive(:wday).and_return(5)
-        end
-
-        it { expect(subject.match?).to be true }
+        it { is_expected.not_to intercept_message('srly BOT ?') }
+        it { is_expected.not_to intercept_message('dis-donc') }
       end
 
       context "when it's not friday" do
@@ -32,35 +22,8 @@ describe FridayInterceptor, type: :interceptor do
           allow_any_instance_of(Time).to receive(:wday).and_return(3)
         end
 
-        it { expect(subject.match?).to be false }
-      end
-    end
-
-    context do
-      let(:message) { 'srly BOT ?' }
-
-      it { expect(subject.match?).to be false }
-
-      context "when it's friday" do
-        before do
-          allow_any_instance_of(Time).to receive(:wday).and_return(5)
-        end
-
-        it { expect(subject.match?).to be false }
-      end
-    end
-
-    context do
-      let(:message) { 'dis-donc' }
-
-      it { expect(subject.match?).to be false }
-
-      context "when it's friday" do
-        before do
-          allow_any_instance_of(Time).to receive(:wday).and_return(5)
-        end
-
-        it { expect(subject.match?).to be false }
+        it { is_expected.not_to intercept_message('vendredi lol') }
+        it { is_expected.not_to intercept_message('srly BOT ?') }
       end
     end
   end
