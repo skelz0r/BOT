@@ -30,6 +30,7 @@ class EohInterceptor < BaseInterceptor
       'On se clape au fond svp',
       'On se skelz0r au fond svp',
       'On se thurolf au fond svp',
+      'On se tata au fond svp',
       'Ça coinche au fond svp',
       'C\'est coinché au fond svp',
       'On se stuff au fond svp',
@@ -41,6 +42,8 @@ class EohInterceptor < BaseInterceptor
       'Ça vieillit au fond svp',
       'On se canne au fond svp',
       'Ça compact au fond svp',
+      'Ça raclette au fond svp',
+      'Ça tartiflette au fond svp',
       'On s\'égare au fond svp',
     ]
   end
