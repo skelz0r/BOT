@@ -42,6 +42,7 @@ end
 
 interceptors = [
   OkiInterceptor,
+  LolInterceptor,
   EohInterceptor,
   BalembotSrlyInterceptor,
   FridayInterceptor,
