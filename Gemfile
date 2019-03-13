@@ -4,6 +4,7 @@ gem "cinch"
 gem "text-hyphen"
 gem "ruby-sox"
 gem "espeak-ruby", require: "espeak"
+gem 'spintax_parser'
 
 group :development, :test do
   gem 'hashie'

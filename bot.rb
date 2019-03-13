@@ -2,8 +2,13 @@ $:.unshift File.dirname(__FILE__)
 
 require 'cinch'
 require 'uri'
+require 'spintax_parser'
 
 require 'lib/interceptor/base_interceptor'
+
+class String
+  include SpintaxParser
+end
 
 [
   'lib/',
@@ -62,7 +67,7 @@ bot = Cinch::Bot.new do
       interceptor = interceptor_klass.new(m.message, m.user)
 
       if interceptor.match?
-        m.reply interceptor.reply
+        m.reply interceptor.reply.unspin
         return
       end
     end
