@@ -46,6 +46,7 @@ class EohInterceptor < BaseInterceptor
       'Ça tartiflette au fond svp',
       'SYRAGE au fond svp',
       'On s\'égare au fond svp',
+      'eoh, on rentre du boulot',
     ]
   end
 
