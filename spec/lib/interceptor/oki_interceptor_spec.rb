@@ -21,6 +21,9 @@ describe OkiInterceptor, type: :interceptor do
         let(:random_number) { 1 }
 
         it { is_expected.to intercept_message('OKI?') }
+        it { is_expected.to intercept_message('LOL OKI?') }
+
+        it { is_expected.not_to intercept_message('LOLOKI?') }
       end
 
       context do

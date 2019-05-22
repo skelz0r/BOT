@@ -1,6 +1,6 @@
 class OkiInterceptor < BaseInterceptor
   def match?
-    !!(message =~ /^\s*OKI\s*\?\s*$/) &&
+    !!(message =~ /(^|\s+)OKI\s*\?\s*$/) &&
       (whitelist_nicks || rand(random_for_another_user) == 1)
   end
 
