@@ -47,6 +47,7 @@ class EohInterceptor < BaseInterceptor
       'SYRAGE au fond svp',
       'On s\'égare au fond svp',
       'eoh, on rentre du boulot',
+      'On se conf au fond svp',
     ]
   end
 
