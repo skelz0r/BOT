@@ -37,7 +37,7 @@ class EohInterceptor < BaseInterceptor
       'On se ghost au fond svp',
       'On se profile au fond svp',
       'On se pakito au fond svp',
-      'On se guinness dans le hall svp',
+      'On se Guinness dans le hall svp',
       'On picole au fond svp',
       'Ça vieillit au fond svp',
       'On se canne au fond svp',
