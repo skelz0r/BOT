@@ -5,7 +5,14 @@ class FridayInterceptor < BaseInterceptor
   end
 
   def reply
-    'DI :D'
+    [
+      'DI :D',
+      'DI \o',
+      'DI',
+      'di',
+      'DiIiIIiIiiIIiiiI',
+      'DI',
+    ].sample
   end
 
   private
