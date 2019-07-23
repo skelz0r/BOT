@@ -48,6 +48,7 @@ class EohInterceptor < BaseInterceptor
       'On s\'égare au fond svp',
       'eoh, on rentre du boulot',
       'On se conf au fond svp',
+      'Ça picole au Little',
     ]
   end
 
