@@ -55,25 +55,16 @@ describe EohInterceptor, type: :interceptor do
 
         subject { instance.send(:answers) }
 
-        after do
-          Timecop.return
-        end
+        Date::DAYNAMES.each do |d|
+          day = Date.parse(d)
 
-        context 'when it's monday' do
-          before do
-            Timecop.travel(MONDAY)
-          end
-
-          it 'is OK' do
-            expect(subject).to include(LINE)
-          end
-        end
-
-        context 'when it's not monday' do
-          Date::DAYNAMES.map do |d|
-            day = Date.parse(d)
-
-            unless day == MONDAY
+          context 'when it's #{d}' do
+            if day == MONDAY
+              it 'is OK' do
+                Timecop.travel(day)
+                expect(subject).to include(LINE)
+              end
+            else
               it 'is not OK' do
                 Timecop.travel(day)
                 expect(subject).not_to include(LINE)
