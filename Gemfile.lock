@@ -79,6 +79,7 @@ GEM
       backports (~> 3.3)
     text-hyphen (1.4.1)
     thor (0.20.0)
+    timecop (0.9.1)
     unicode-display_width (1.7.0)
 
 PLATFORMS
@@ -95,6 +96,7 @@ DEPENDENCIES
   ruby-sox
   spintax_parser
   text-hyphen
+  timecop
 
 BUNDLED WITH
    1.17.3
