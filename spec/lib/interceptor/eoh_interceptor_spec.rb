@@ -51,7 +51,7 @@ describe EohInterceptor, type: :interceptor do
 
       describe 'drinking at Little'' do
         MONDAY = Date.parse('monday')
-        LINE = 'Ça picole au Little'
+        LINE = 'Ça picole au Little le lundi'
 
         subject { instance.send(:answers) }
 
