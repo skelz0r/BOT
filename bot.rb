@@ -62,6 +62,10 @@ bot = Cinch::Bot.new do
     c.channels = CHANS
   end
 
+  on :invite do |m|
+    @bot.join(m.channel)
+  end
+
   on :message, /.*/ do |m|
     interceptors.each do |interceptor_klass|
       interceptor = interceptor_klass.new(m.message, m.user)
