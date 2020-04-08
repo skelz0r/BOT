@@ -52,6 +52,7 @@ interceptors = [
   BalembotSrlyInterceptor,
   FridayInterceptor,
   KeywordToSentenceInterceptor,
+  Stalz0rInterceptor,
 ]
 
 bot = Cinch::Bot.new do
