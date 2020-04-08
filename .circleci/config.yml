@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.3.8-node-browsers-legacy
+       - image: circleci/ruby:2.6.5
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
