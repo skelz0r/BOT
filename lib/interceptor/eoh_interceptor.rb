@@ -57,8 +57,7 @@ class EohInterceptor < BaseInterceptor
   def random_victim
     [
       'Amora',
-      ['corn']*5,
-      'Tata',
+      ['Tata']*5,
       'Skelz0r',
     ].flatten.sample
   end
