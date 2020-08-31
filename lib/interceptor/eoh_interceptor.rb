@@ -55,7 +55,18 @@ class EohInterceptor < BaseInterceptor
     if rand_tg
       "TG #{random_victim}"
     else
-      ANSWERS.sample.capitalize
+      hl_user = get_hl_user
+      if hl_user
+        hl_user + ", " + ANSWERS.sample
+      else
+        ANSWERS.sample.capitalize
+      end
+    end
+  end
+
+  def get_hl_user
+    if /^(?<hl_user>[A-Za-z_]+)[,:]/ =~ message
+      hl_user
     end
   end
 
