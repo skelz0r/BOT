@@ -23,10 +23,6 @@ describe EohInterceptor, type: :interceptor do
       }.not_to raise_error
     end
 
-    before do
-      allow_any_instance_of(EohInterceptor).to receive(:rand_tg).and_return(false)
-    end
-
     context 'non-uppercase message' do
       let(:message) { 'Random casing EOh' }
 
@@ -44,22 +40,22 @@ describe EohInterceptor, type: :interceptor do
       end
     end
 
-    context 'when it's not a random TG' do
+    context "when it's not a random TG" do
       before do
         allow_any_instance_of(EohInterceptor).to receive(:rand_tg).and_return(false)
       end
 
-      describe 'drinking at Little'' do
-        MONDAY = Date.parse('monday')
-        LINE = 'Ça picole au Little le lundi'
+      describe 'drinking at Little' do
+        TUESDAY = Date.parse('tuesday')
+        LINE = 'Ça picole au Little le mardi'
 
         subject { instance.send(:answers) }
 
         Date::DAYNAMES.each do |d|
           day = Date.parse(d)
 
-          context 'when it's #{d}' do
-            if day == MONDAY
+          context "when it's #{d}" do
+            if day == TUESDAY
               it 'is OK' do
                 Timecop.travel(day)
                 expect(subject).to include(LINE)
