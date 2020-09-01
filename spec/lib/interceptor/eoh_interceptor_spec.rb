@@ -49,5 +49,21 @@ describe EohInterceptor, type: :interceptor do
         expect(subject).to be_a(String)
       end
     end
+
+    context "when it's an hl eoh with comma" do
+      let(:message) { "Tata, eoh" }
+
+      it "should reply why an hl too" do
+        expect(subject).to match(/^Tata, /)
+      end
+    end
+
+    context "when it's an hl eoh with colon" do
+      let(:message) { "Tata: eoh" }
+
+      it "should reply why an hl too" do
+        expect(subject).to match(/^Tata, /)
+      end
+    end
   end
 end
