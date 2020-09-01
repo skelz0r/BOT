@@ -25,6 +25,7 @@ jobs:
       - run:
           name: install soxe / espeak
           command: |
+            sudo apt-get update && \
             sudo apt-get install espeak lame \
               libsox-fmt-all sox libchromaprint-dev
       - run:
