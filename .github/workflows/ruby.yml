@@ -1,0 +1,19 @@
+name: Ruby
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6
+    - name: Install apt dependencies
+      run: sudo apt-get install -y libsox-fmt-all sox libchromaprint-dev espeak lame
+    - name: Install gem dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rspec
