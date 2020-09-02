@@ -5,12 +5,15 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby_version: [2.6, 2.7]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6
+        ruby-version: ${{ matrix.ruby_version }}
     - name: Install apt dependencies
       run: sudo apt-get install -y libsox-fmt-all sox libchromaprint-dev espeak lame
     - name: Install gem dependencies
