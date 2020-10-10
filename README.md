@@ -1,5 +1,5 @@
 # BOT
-![Tests and lint](https://github.com/skelz0r/BOT/workflows/Ruby/badge.svg)
+![Tests and lint](https://github.com/skelz0r/BOT/workflows/Test%20and%20lint/badge.svg)
 
 A dummy bot which repeat last syllabe of random sentences on IRC
 Problem?
