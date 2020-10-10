@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe BalembotSrlyInterceptor, type: :interceptor do
-  describe "#match?" do
+  describe '#match?' do
     subject { instance }
 
     it { is_expected.to intercept_message('SRLY BOT ?') }
     it { is_expected.not_to intercept_message('srly BOT ?') }
   end
 
-  describe "#reply" do
+  describe '#reply' do
     subject { instance.reply }
 
     it do

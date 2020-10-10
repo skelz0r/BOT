@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FridayInterceptor < BaseInterceptor
   def match?
     friday? &&

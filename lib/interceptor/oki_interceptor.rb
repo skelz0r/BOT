@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OkiInterceptor < BaseInterceptor
   def match?
     !!(message =~ /(^|\s+)OKI\s*\?\s*$/) &&
@@ -15,10 +17,10 @@ class OkiInterceptor < BaseInterceptor
   end
 
   def whitelist_nicks
-    [
-      'skelz0r',
-      'feriel',
-      'kiddo',
+    %w[
+      skelz0r
+      feriel
+      kiddo
     ].any? do |nick|
       user.nick.downcase == nick
     end

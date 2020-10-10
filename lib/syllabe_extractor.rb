@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'text/hyphen'
 
 class SyllabeExtractor
@@ -7,29 +9,29 @@ class SyllabeExtractor
     @sentence = sentence
   end
 
+  # rubocop:disable Style/RescueStandardError
   def perform
-    @final_sentence ||= begin
-      index = @points[-1]
-      truncate_sentence = @points.empty? ? @sentence : @sentence[index..-1]
-      upcase(sanitize_punctuation(truncate_sentence))
-    rescue => e
-      p e
-      random_sentence
-    end
+    index = @points[-1]
+    truncate_sentence = @points.empty? ? @sentence : @sentence[index..-1]
+    upcase(sanitize_punctuation(truncate_sentence))
+  rescue => e
+    p e
+    random_sentence
   end
+  # rubocop:enable Style/RescueStandardError
 
   protected
 
   def upcase(string)
-    string.upcase.gsub(/[æøåäâãàáëêèéïîìíöôõòóüûùúý]/){|s| (s.ord-32).chr(Encoding::UTF_8)}
+    string.upcase.gsub(/[æøåäâãàáëêèéïîìíöôõòóüûùúý]/) { |s| (s.ord - 32).chr(Encoding::UTF_8) }
   end
 
   def sanitize_punctuation(sentence)
-    sentence.gsub(/ +[^\w\s]*$/, "").gsub(/ *<3/, "").gsub("*", "")
+    sentence.gsub(/ +[^\w\s]*$/, '').gsub(/ *<3/, '').gsub('*', '')
   end
 
   def random_sentence
-    %w(
+    %w[
       FU
       BA
       YOP
@@ -43,6 +45,6 @@ class SyllabeExtractor
       SEXE
       CLOPE
       RHUM
-    )
+    ]
   end
 end

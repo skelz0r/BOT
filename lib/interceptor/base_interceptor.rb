@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class BaseInterceptor
   attr_reader :message,
-    :user
+              :user
 
   def initialize(message, user)
     @message = message
@@ -8,10 +10,10 @@ class BaseInterceptor
   end
 
   def match?
-    raise "Should be overwrite in inherited classes"
+    raise 'Should be overwrite in inherited classes'
   end
 
   def reply
-    raise "Should be overwrite in inherited classes"
+    raise 'Should be overwrite in inherited classes'
   end
 end

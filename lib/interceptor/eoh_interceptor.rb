@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 VICTIMS = [
   'Amora',
-  ['Tata']*5,
+  ['Tata'] * 5,
   'Skelz0r',
-].flatten
+].flatten.freeze
 
 ANSWERS = [
   'on se clap au fond svp',
@@ -33,8 +35,7 @@ ANSWERS = [
   'ça picole au Little',
   'on se ramen au fond svp',
   'ça Gicle au fond svp',
-]
-
+].freeze
 
 class EohInterceptor < BaseInterceptor
   def match?
@@ -54,19 +55,16 @@ class EohInterceptor < BaseInterceptor
   def answer
     if rand_tg
       "TG #{random_victim}"
+    elsif hled_user
+      hled_user + ', ' + ANSWERS.sample
     else
-      hl_user = get_hl_user
-      if hl_user
-        hl_user + ", " + ANSWERS.sample
-      else
-        ANSWERS.sample.capitalize
-      end
+      ANSWERS.sample.capitalize
     end
   end
 
-  def get_hl_user
-    if /^(?<hl_user>[A-Za-z_]+)[,:]/ =~ message
-      hl_user
+  def hled_user
+    if /^(?<user>[A-Za-z_]+)[,:]/ =~ message
+      user
     end
   end
 
@@ -79,6 +77,6 @@ class EohInterceptor < BaseInterceptor
   end
 
   def uppercase_message?
-    !(message =~ /[[:lower:]]/) # negative match, fail the predicate on the first lowercase character
+    message !~ /[[:lower:]]/
   end
 end

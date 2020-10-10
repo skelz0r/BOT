@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe LolInterceptor, type: :interceptor do
-  describe "#match?" do
+  describe '#match?' do
     subject { instance }
 
     it { is_expected.to intercept_message('lol') }
@@ -16,7 +18,7 @@ describe LolInterceptor, type: :interceptor do
     it { is_expected.not_to intercept_message('ah ok') }
   end
 
-  describe "#reply" do
+  describe '#reply' do
     subject { instance.reply }
 
     it do

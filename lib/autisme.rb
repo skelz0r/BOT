@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Austisme
   attr_reader :sentence,
-    :initial_message,
-    :last_autisme,
-    :sound_url
+              :initial_message,
+              :last_autisme,
+              :sound_url
 
   def initialize(message, last_autisme)
     @initial_message = message
@@ -11,7 +13,7 @@ class Austisme
   end
 
   def mad?
-    rand(autisme_rand) == 0 ||
+    rand(autisme_rand).zero? ||
       same_sentence_from_last_autisme?
   end
 
@@ -30,9 +32,9 @@ class Austisme
 
   def autisme_rand
     if initial_message.upcase == initial_message
-      (ENV['AUTISME_RAND'].to_i) / 2
+      ENV['AUTISME_RAND'].to_i / 2
     else
-      (ENV['AUTISME_RAND'].to_i)
+      ENV['AUTISME_RAND'].to_i
     end
   end
 end

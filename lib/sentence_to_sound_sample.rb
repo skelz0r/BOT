@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'espeak'
 require 'ruby-sox'
 
@@ -10,8 +12,8 @@ class SentenceToSoundSample
 
   def perform
     @file_name = path_to_file(@sentence)
-    speech = Speech.new(@sentence, voice: "fr")
-    speech.save(sounds_path + @file_name + ".tmp.mp3")
+    speech = Speech.new(@sentence, voice: 'fr')
+    speech.save(sounds_path + @file_name + '.tmp.mp3')
     modulate_sound(sounds_path + @file_name)
   end
 
@@ -20,13 +22,13 @@ class SentenceToSoundSample
   end
 
   def url
-    URI.escape(url_sound + @file_name)
+    CGI.escape(url_sound + @file_name)
   end
 
   protected
 
   def url_sound
-    ENV['URL_SOUND'] || "HTTP://BOT.SKELZ0R.FR/"
+    ENV['URL_SOUND'] || 'HTTP://BOT.SKELZ0R.FR/'
   end
 
   def sounds_path
@@ -38,11 +40,13 @@ class SentenceToSoundSample
   end
 
   def modulate_sound(file)
-    tmp_file = file+".tmp.mp3"
+    tmp_file = file + '.tmp.mp3'
 
-    sox = Sox::Cmd.new.add_input(tmp_file)
-      .set_output(file)
-      .set_effects(sound_options)
+    sox = Sox::Cmd.new
+                  .add_input(tmp_file)
+                  .set_output(file)
+                  .set_effects(sound_options)
+
     sox.run
 
     File.delete(tmp_file)
@@ -56,6 +60,6 @@ class SentenceToSoundSample
   end
 
   def sound_options_stringify
-    "-#{sound_options[:pitch].to_s}-#{sound_options[:speed].to_s.sub(".", "-")}"
+    "-#{sound_options[:pitch]}-#{sound_options[:speed].to_s.sub('.', '-')}"
   end
 end

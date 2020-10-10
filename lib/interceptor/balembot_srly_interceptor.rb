@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BalembotSrlyInterceptor < BaseInterceptor
   def match?
     message == 'SRLY BOT ?'

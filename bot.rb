@@ -1,4 +1,6 @@
-$:.unshift File.dirname(__FILE__)
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.dirname(__FILE__)
 
 require 'cinch'
 require 'uri'
@@ -23,24 +25,24 @@ end
 
 @last_autisme = nil
 
-if ENV["DEBUG"]
-  ENV['BOT_NICK'] ||= "BOTDEBUG"
+if ENV['DEBUG']
+  ENV['BOT_NICK'] ||= 'BOTDEBUG'
 
   CHANS = [
-    "#autisme",
-  ]
+    '#autisme',
+  ].freeze
 
   ENV['AUTISME_RAND'] ||= '1'
 else
-  ENV['BOT_NICK'] ||= "BOT"
+  ENV['BOT_NICK'] ||= 'BOT'
 
   CHANS = [
-    "#balemboy",
-    "#carambar",
-    "#1A",
-    "#cesoir",
-    "#rage",
-  ]
+    '#balemboy',
+    '#carambar',
+    '#1A',
+    '#cesoir',
+    '#rage',
+  ].freeze
 
   ENV['AUTISME_RAND'] ||= '30'
 end
@@ -58,8 +60,8 @@ interceptors = [
 bot = Cinch::Bot.new do
   configure do |c|
     c.nick = ENV['BOT_NICK']
-    c.user = "BOT"
-    c.server = "irc.iiens.net"
+    c.user = 'BOT'
+    c.server = 'irc.iiens.net'
     c.channels = CHANS
   end
 
@@ -71,10 +73,13 @@ bot = Cinch::Bot.new do
     interceptors.each do |interceptor_klass|
       interceptor = interceptor_klass.new(m.message, m.user)
 
+      # rubocop:disable Style/Next
       if interceptor.match?
         m.reply interceptor.reply.unspin
-        return
+
+        return true
       end
+      # rubocop:enable Style/Next
     end
 
     autisme = Austisme.new(m.message, @last_autisme)
@@ -82,7 +87,7 @@ bot = Cinch::Bot.new do
     if autisme.mad?
       autisme.madness!
 
-      m.reply (Format(:bold, "#{autisme.sentence}") + " " + Format(:black, "#{autisme.sound_url}"))
+      m.reply(Format(:bold, autisme.sentence) + ' ' + Format(:black, autisme.sound_url))
 
       @last_autisme = autisme
     end

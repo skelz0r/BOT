@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe OkiInterceptor, type: :interceptor do
-  describe "#match?" do
+  describe '#match?' do
     subject { instance }
 
     context do
@@ -40,7 +42,7 @@ describe OkiInterceptor, type: :interceptor do
     end
   end
 
-  describe "#reply" do
+  describe '#reply' do
     subject { instance.reply }
 
     it do

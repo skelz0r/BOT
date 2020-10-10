@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InterceptorMatcher
   class InterceptMessage
     attr_reader :text, :user, :interceptor
