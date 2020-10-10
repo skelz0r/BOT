@@ -13,6 +13,7 @@ group :development, :test do
   gem 'hashie'
   gem 'rspec'
   gem 'guard-rspec'
+  gem 'timecop'
 
   # For Pry (dependency of Guard)
   gem 'rb-readline'

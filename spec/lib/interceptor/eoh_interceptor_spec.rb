@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'timecop'
 
 describe EohInterceptor, type: :interceptor do
   describe '#match?' do
@@ -13,6 +14,7 @@ describe EohInterceptor, type: :interceptor do
   end
 
   describe '#reply' do
+    let(:message) { 'eoh' }
     subject { instance.reply }
 
     it do
@@ -35,6 +37,37 @@ describe EohInterceptor, type: :interceptor do
 
       it 'should uppercase the reply if the message itself was in uppercase' do
         expect(subject).to eq(subject.upcase)
+      end
+    end
+
+    context "when it's not a random TG" do
+      before do
+        allow_any_instance_of(EohInterceptor).to receive(:rand_tg).and_return(false)
+      end
+
+      describe 'drinking at Little' do
+        TUESDAY = Date.parse('tuesday')
+        LINE = 'Ça picole au Little le mardi'
+
+        subject { instance.send(:answers) }
+
+        Date::DAYNAMES.each do |d|
+          day = Date.parse(d)
+
+          context "when it's #{d}" do
+            if day == TUESDAY
+              it 'is OK' do
+                Timecop.travel(day)
+                expect(subject).to include(LINE)
+              end
+            else
+              it 'is not OK' do
+                Timecop.travel(day)
+                expect(subject).not_to include(LINE)
+              end
+            end
+          end
+        end
       end
     end
 
