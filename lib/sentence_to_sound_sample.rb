@@ -13,7 +13,7 @@ class SentenceToSoundSample
   def perform
     @file_name = path_to_file(@sentence)
     speech = Speech.new(@sentence, voice: 'fr')
-    speech.save(sounds_path + @file_name + '.tmp.mp3')
+    speech.save("#{sounds_path}#{@file_name}.tmp.mp3")
     modulate_sound(sounds_path + @file_name)
   end
 
@@ -40,7 +40,7 @@ class SentenceToSoundSample
   end
 
   def modulate_sound(file)
-    tmp_file = file + '.tmp.mp3'
+    tmp_file = "#{file}.tmp.mp3"
 
     sox = Sox::Cmd.new
                   .add_input(tmp_file)

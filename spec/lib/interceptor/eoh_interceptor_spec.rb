@@ -63,8 +63,8 @@ describe EohInterceptor, type: :interceptor do
       end
 
       describe 'drinking at Little' do
-        TUESDAY = Date.parse('tuesday')
-        LINE = 'Ça picole au Little le mardi'
+        tuesday = Date.parse('tuesday')
+        line = 'Ça picole au Little le mardi'
 
         subject { instance.send(:answers) }
 
@@ -72,15 +72,15 @@ describe EohInterceptor, type: :interceptor do
           day = Date.parse(d)
 
           context "when it's #{d}" do
-            if day == TUESDAY
+            if day == tuesday
               it 'is OK' do
                 Timecop.travel(day)
-                expect(subject).to include(LINE)
+                expect(subject).to include(line)
               end
             else
               it 'is not OK' do
                 Timecop.travel(day)
-                expect(subject).not_to include(LINE)
+                expect(subject).not_to include(line)
               end
             end
           end

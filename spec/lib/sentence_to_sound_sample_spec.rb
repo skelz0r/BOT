@@ -12,7 +12,7 @@ describe SentenceToSoundSample do
       speed: 1.0,
     })
 
-    ENV['SOUNDS_PATH'] = File.expand_path(File.join(File.dirname(__FILE__), '../../sounds/')) + '/'
+    ENV['SOUNDS_PATH'] = "#{File.expand_path(File.join(File.dirname(__FILE__), '../../sounds/'))}/"
   end
 
   describe '#perform' do

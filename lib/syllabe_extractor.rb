@@ -12,7 +12,7 @@ class SyllabeExtractor
   # rubocop:disable Style/RescueStandardError
   def perform
     index = @points[-1]
-    truncate_sentence = @points.empty? ? @sentence : @sentence[index..-1]
+    truncate_sentence = @points.empty? ? @sentence : @sentence[index..]
     upcase(sanitize_punctuation(truncate_sentence))
   rescue => e
     p e

@@ -87,7 +87,7 @@ bot = Cinch::Bot.new do
     if autisme.mad?
       autisme.madness!
 
-      m.reply(Format(:bold, autisme.sentence) + ' ' + Format(:black, autisme.sound_url))
+      m.reply("#{Format(:bold, autisme.sentence)} #{Format(:black, autisme.sound_url)}")
 
       @last_autisme = autisme
     end

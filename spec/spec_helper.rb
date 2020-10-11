@@ -2,7 +2,7 @@
 
 $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '../'))
 
-Dir[File.dirname(__FILE__) + '/support/**/*.rb'].sort.each { |f| require f }
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |f| require f }
 
 require 'hashie'
 

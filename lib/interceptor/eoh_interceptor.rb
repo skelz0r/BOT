@@ -27,7 +27,7 @@ class EohInterceptor < BaseInterceptor
     if rand_tg
       "TG #{random_victim}"
     elsif hled_user
-      hled_user + ', ' + answers.sample
+      "#{hled_user}, #{answers.sample}"
     else
       answers.sample.capitalize
     end
