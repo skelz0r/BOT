@@ -2,6 +2,7 @@
 
 require 'espeak'
 require 'ruby-sox'
+require 'cgi'
 
 class SentenceToSoundSample
   include ESpeak
