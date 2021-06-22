@@ -23,7 +23,7 @@ class SentenceToSoundSample
   end
 
   def url
-    CGI.escape(url_sound + @file_name)
+    url_sound + CGI.escape(@file_name)
   end
 
   protected

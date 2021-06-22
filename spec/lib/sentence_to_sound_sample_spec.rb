@@ -24,4 +24,15 @@ describe SentenceToSoundSample do
       }.to change { Dir.new(ENV['SOUNDS_PATH']).entries.count }.by(1)
     end
   end
+
+  describe '#url' do
+    subject do
+      service.perform
+      service.url
+    end
+
+    it 'renders a valid url' do
+      expect(subject).to start_with('HTTP://')
+    end
+  end
 end
