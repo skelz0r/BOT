@@ -34,7 +34,7 @@ if ENV['DEBUG']
 
   ENV['AUTISME_RAND'] ||= '1'
 else
-  ENV['BOT_NICK'] ||= 'BOT'
+  ENV['BOT_NICK'] ||= 'BUTT'
 
   CHANS = [
     '#balemboy',
