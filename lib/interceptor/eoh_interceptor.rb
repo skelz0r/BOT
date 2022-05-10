@@ -68,6 +68,7 @@ class EohInterceptor < BaseInterceptor
       'On se conf au fond svp',
       'On se ramen au fond svp',
       'Ça Gicle au fond svp',
+      'FAIS TON CV MOISE',
       *('Ça picole au Little le mardi' if Date.today.tuesday?),
     ]
   end
